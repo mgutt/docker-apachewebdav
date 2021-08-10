@@ -1,7 +1,3 @@
-## Supported tags
-
-* [`2.4`, `latest` (*2.4/Dockerfile*)](https://github.com/BytemarkHosting/docker-webdav/blob/master/2.4/Dockerfile)
-
 ## Quick reference
 
 This image runs an easily configurable WebDAV server with Apache.
