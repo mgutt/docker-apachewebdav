@@ -12,7 +12,6 @@ set -e
 #   SSL_CERT
 #   PUID
 #   PGID
-#   PUMASK
 
 # Just in case this environment variable has gone missing.
 HTTPD_PREFIX="${HTTPD_PREFIX:-/usr/local/apache2}"
