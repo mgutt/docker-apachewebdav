@@ -11,7 +11,7 @@ To make sure your data doesn't get deleted, you'll probably want to create a per
 ```
 docker run --restart always -v /srv/dav:/var/lib/dav \
     -e AUTH_TYPE=Digest -e USERNAME=alice -e PASSWORD=secret1234 \
-    --publish 80:80 -d bytemark/webdav
+    --publish 80:80 -d apachewebdav/apachewebdav
 
 ```
 
@@ -21,7 +21,7 @@ docker run --restart always -v /srv/dav:/var/lib/dav \
 version: '3'
 services:
   webdav:
-    image: bytemark/webdav
+    image: apachewebdav/apachewebdav
     restart: always
     ports:
       - "80:80"
