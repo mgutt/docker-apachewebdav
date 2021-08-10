@@ -1,18 +1,3 @@
-## Quick reference
-
-This image runs an easily configurable WebDAV server with Apache.
-
-You can configure the authentication type, the authentication of multiple users, or to run with a self-signed SSL certificate. If you want a Let's Encrypt certificate, see an example of how to do that [here](https://github.com/BytemarkHosting/configs-webdav-docker).
-
-* **Code repository:**
-  https://github.com/BytemarkHosting/docker-webdav
-* **Where to file issues:**
-  https://github.com/BytemarkHosting/docker-webdav/issues
-* **Maintained by:**
-  [Bytemark Hosting](https://www.bytemark.co.uk)
-* **Supported architectures:**
-  [Any architecture that the `httpd` image supports](https://hub.docker.com/_/httpd/)
-
 ## Usage
 
 ### Basic WebDAV server
@@ -26,7 +11,7 @@ To make sure your data doesn't get deleted, you'll probably want to create a per
 ```
 docker run --restart always -v /srv/dav:/var/lib/dav \
     -e AUTH_TYPE=Digest -e USERNAME=alice -e PASSWORD=secret1234 \
-    --publish 80:80 -d bytemark/webdav
+    --publish 80:80 -d apachewebdav/apachewebdav
 
 ```
 
@@ -36,7 +21,7 @@ docker run --restart always -v /srv/dav:/var/lib/dav \
 version: '3'
 services:
   webdav:
-    image: bytemark/webdav
+    image: apachewebdav/apachewebdav
     restart: always
     ports:
       - "80:80"
