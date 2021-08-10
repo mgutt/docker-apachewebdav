@@ -116,9 +116,4 @@ sed -i -e "s|^Group .*|Group #$PGID|" "$HTTPD_PREFIX/conf/httpd.conf";
 [ ! -e "/var/lib/dav/DavLock" ] && touch "/var/lib/dav/DavLock"
 chown $PUID:$PGID "/var/lib/dav/DavLock"
 
-# Set umask
-if [ "x$PUMASK" != "x" ]; then
-    umask $PUMASK
-fi
-
 exec "$@"
