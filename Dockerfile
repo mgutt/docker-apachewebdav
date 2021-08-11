@@ -25,7 +25,7 @@ RUN set -ex; \
     done; \
     \
     # Make sure other modules are enabled.
-    for i in alias headers mime setenvif; do \
+    for i in alias headers include mime setenvif; do \
         sed -i -e "/^#LoadModule ${i}_module.*/s/^#//" "conf/httpd.conf"; \
     done; \
     \
