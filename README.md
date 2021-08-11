@@ -3,6 +3,7 @@ This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/do
 - [Fix non-ASCII filenames](https://github.com/BytemarkHosting/docker-webdav/pull/20)
 - [Add PUID and PGID](https://github.com/BytemarkHosting/docker-webdav/pull/28)
 - [Add umask](https://github.com/noodlefighter/docker-webdav/pull/1)
+- [Add Windows 10 User-Agent](https://github.com/BytemarkHosting/docker-webdav/pull/11)
 
 ## Usage
 
