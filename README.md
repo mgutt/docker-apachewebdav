@@ -1,3 +1,9 @@
+## Project
+This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/docker-webdav), but as it seems to be dead, I created [apachewebdav/apachewebdav](https://github.com/mgutt/docker-apachewebdav) which includes different pull requests:
+- [Fix non-ASCII filenames](https://github.com/BytemarkHosting/docker-webdav/pull/20)
+- [Add PUID and PGID](https://github.com/BytemarkHosting/docker-webdav/pull/28)
+- [Add umask](https://github.com/noodlefighter/docker-webdav/pull/1)
+
 ## Usage
 
 ### Basic WebDAV server
@@ -83,5 +89,3 @@ All environment variables are optional. You probably want to at least specify `U
 * **`PGID`**: file owner's GID of `/var/lib/dav/data`
 * **`PUMASK`**: umask of `/var/lib/dav/data`
 
-### Project
-This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/docker-webdav), but as it seems to be dead, I created [apachewebdav/apachewebdav](https://github.com/mgutt/docker-apachewebdav) which already includes different pull requests.
