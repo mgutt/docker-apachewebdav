@@ -84,4 +84,4 @@ All environment variables are optional. You probably want to at least specify `U
 * **`PUMASK`**: umask of `/var/lib/dav/data`
 
 ### Project
-This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/docker-webdav), but as it seems to be dead, I created [my own](https://github.com/mgutt/docker-apachewebdav) which already includes different pull requests.
+This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/docker-webdav), but as it seems to be dead, I created [apachewebdav/apachewebdav](https://github.com/mgutt/docker-apachewebdav) which already includes different pull requests.
