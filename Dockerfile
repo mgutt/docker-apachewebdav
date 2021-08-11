@@ -30,7 +30,7 @@ RUN set -ex; \
     done; \
     \
     # Enable Icons
-    sed -i '/httpd-autoindex.conf/s/^#//' conf/httpd.conf
+    sed -i '/httpd-autoindex.conf/s/^#//' conf/httpd.conf \
     # Include enabled configs and sites.
     printf '%s\n' "Include conf/conf-enabled/*.conf" \
         >> "conf/httpd.conf"; \
