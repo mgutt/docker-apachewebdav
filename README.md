@@ -6,6 +6,7 @@ This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/do
 - [Add Windows 10 User-Agent](https://github.com/BytemarkHosting/docker-webdav/pull/11)
 - [Disable DirectoryIndex to avoid DoS](https://github.com/BytemarkHosting/docker-webdav/pull/21)
 - [Fix SSL Error](https://github.com/BytemarkHosting/docker-webdav/pull/23)
+- [Add Apache Commons User-Agent](https://github.com/BytemarkHosting/docker-webdav/pull/25)
 
 ## Usage
 
