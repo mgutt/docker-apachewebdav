@@ -82,3 +82,6 @@ All environment variables are optional. You probably want to at least specify `U
 * **`PUID`**: file owner's UID of `/var/lib/dav/data`
 * **`PGID`**: file owner's GID of `/var/lib/dav/data`
 * **`PUMASK`**: umask of `/var/lib/dav/data`
+
+### Project
+This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/docker-webdav), but as it seems to be dead, I created [my own](https://github.com/mgutt/docker-apachewebdav) which already includes different pull requests.
