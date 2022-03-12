@@ -1,5 +1,5 @@
 ## Project
-This project is based on [bytemark/webdav](https://github.com/BytemarkHosting/docker-webdav) which seems to be dead so I created [apachewebdav/apachewebdav](https://github.com/mgutt/docker-apachewebdav) which includes different pull requests:
+This project "[apachewebdav/apachewebdav](https://github.com/mgutt/docker-apachewebdav)" is based on [bytemark/webdav](https://github.com/BytemarkHosting/docker-webdav) (which seems to be dead) which includes different pull requests:
 - [Fix non-ASCII filenames](https://github.com/BytemarkHosting/docker-webdav/pull/20)
 - [Add PUID and PGID](https://github.com/BytemarkHosting/docker-webdav/pull/28)
 - [Add umask](https://github.com/noodlefighter/docker-webdav/pull/1)
