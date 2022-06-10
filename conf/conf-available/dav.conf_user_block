@@ -1,8 +1,20 @@
 # $user \
-    Alias $Location$user "/var/lib/dav/data/$user/"\
+    Alias $Location/$user "/var/lib/dav/data/$user/"\
  \
     <Directory "/var/lib/dav/data/$user/">\
         Dav             On\
+        Options Indexes FollowSymLinks\
+        IndexOptions Charset=UTF-8\
+        DirectoryIndex disabled\
+        IndexOptions FancyIndexing\
+        IndexOptions HTMLTable\
+        IndexOptions SuppressDescription\
+        IndexOptions SuppressRules\
+        IndexOptions NameWidth=*\
+        IndexOrderDefault Ascending Name\
+        IndexOptions IgnoreCase\
+        IndexOptions FoldersFirst\
+        IndexOptions VersionSort\
         AuthType        Basic\
         AuthName        "WebDAV"\
         AuthUserFile    "/user.passwd"\

@@ -1,9 +1,21 @@
 DavLockDB "/var/lib/dav/DavLock"
 # transfer 
-    Alias /transfer "/var/lib/dav/data/transfer/"
+    Alias $Location/transfer "/var/lib/dav/data/transfer/"
  
     <Directory "/var/lib/dav/data/transfer/">
         Dav             On
+        Options Indexes FollowSymLinks
+        IndexOptions Charset=UTF-8
+        DirectoryIndex disabled
+        IndexOptions FancyIndexing
+        IndexOptions HTMLTable
+        IndexOptions SuppressDescription
+        IndexOptions SuppressRules
+        IndexOptions NameWidth=*
+        IndexOrderDefault Ascending Name
+        IndexOptions IgnoreCase
+        IndexOptions FoldersFirst
+        IndexOptions VersionSort
         AuthType        Basic 
         AuthName        "WebDAV"
         AuthUserFile    "/user.passwd"
@@ -21,6 +33,7 @@ DavLockDB "/var/lib/dav/DavLock"
 # These disable redirects on non-GET requests for directories that
 # don't include the trailing slash (for misbehaving clients).
 BrowserMatch "Microsoft Data Access Internet Publishing Provider" redirect-carefully
+BrowserMatch "^Microsoft-WebDAV-MiniRedir" redirect-carefully
 BrowserMatch "MS FrontPage" redirect-carefully
 BrowserMatch "^WebDrive" redirect-carefully
 BrowserMatch "^WebDAVFS/1.[01234]" redirect-carefully
@@ -29,3 +42,4 @@ BrowserMatch "^XML Spy" redirect-carefully
 BrowserMatch "^Dreamweaver-WebDAV-SCM1" redirect-carefully
 BrowserMatch " Konqueror/4" redirect-carefully
 BrowserMatch "^gvfs" redirect-carefully
+BrowserMatch "^Jakarta-Commons-VFS" redirect-carefully
