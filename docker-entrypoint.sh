@@ -19,6 +19,31 @@ HTTPD_PREFIX="${HTTPD_PREFIX:-/usr/local/apache2}"
 PUID=${PUID:-1000}
 PGID=${PGID:-1000}
 
+# decide between single user mode (no separate home directories) and
+# multi user mode (separate dedicated home directories and one shared transfer folder)
+
+if [ ! -e "/user.passwd" ]; then
+  cp "$HTTPD_PREFIX/conf/conf-available/dav.conf_single_user" "$HTTPD_PREFIX/conf/conf-available/dav.conf"
+# Configure dav.conf
+if [ "x$LOCATION" != "x" ]; then
+    sed -e "s|Alias .*|Alias $LOCATION /var/lib/dav/data/|" \
+        -i "$HTTPD_PREFIX/conf/conf-available/dav.conf"
+fi
+else
+  cp "$HTTPD_PREFIX/conf/conf-available/dav.conf_multi_user" "$HTTPD_PREFIX/conf/conf-available/dav.conf"
+cat /user.passwd | while read line
+do
+        user=$(echo -n $line|cut -d ":" -f 1)
+        mkdir -p "/var/lib/dav/data/$user"
+        user_block=$(cat $HTTPD_PREFIX/conf/conf-available/dav.conf_user_block)
+        user_block=$(echo "$user_block"|sed -e 's/\$user/'"$user"'/g')
+        sed 's!#placeholder_for_user_block!'"$user_block"'#placeholder_for_user_block!g' -i $HTTPD_PREFIX/conf/conf-available/dav.conf               
+done
+sed -e 's|$Location|'"${LOCATION:-/}"'|g' \
+    -i "$HTTPD_PREFIX/conf/conf-available/dav.conf"
+
+fi
+
 # Configure vhosts.
 if [ "x$SERVER_NAMES" != "x" ]; then
     # Use first domain as Apache ServerName.
@@ -32,11 +57,6 @@ if [ "x$SERVER_NAMES" != "x" ]; then
         -i "$HTTPD_PREFIX"/conf/sites-available/default*.conf
 fi
 
-# Configure dav.conf
-if [ "x$LOCATION" != "x" ]; then
-    sed -e "s|Alias .*|Alias $LOCATION /var/lib/dav/data/|" \
-        -i "$HTTPD_PREFIX/conf/conf-available/dav.conf"
-fi
 if [ "x$REALM" != "x" ]; then
     sed -e "s|AuthName .*|AuthName \"$REALM\"|" \
         -i "$HTTPD_PREFIX/conf/conf-available/dav.conf"
@@ -113,8 +133,10 @@ sed -i -e "s|^Group .*|Group #$PGID|" "$HTTPD_PREFIX/conf/httpd.conf";
 
 # Create directories for Dav data and lock database.
 [ ! -d "/var/lib/dav/data" ] && mkdir -p "/var/lib/dav/data"
+[ ! -d "/var/lib/dav/data/transfer" ] && mkdir -p "/var/lib/dav/data/transfer"
 [ ! -e "/var/lib/dav/DavLock" ] && touch "/var/lib/dav/DavLock"
 chown $PUID:$PGID "/var/lib/dav/data"
+chown $PUID:$PGID "/var/lib/dav/data/transfer"
 chown $PUID:$PGID "/var/lib/dav/DavLock"
 
 # Set umask
