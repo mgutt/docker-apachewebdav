@@ -24,7 +24,7 @@ DavLockDB "/var/lib/dav/DavLock"
 	</RequireAny>
     </Directory>
  
-    <Location /transfer/>
+    <Location "$Location/transfer/">
         Require    valid-user 
     </Location>
 

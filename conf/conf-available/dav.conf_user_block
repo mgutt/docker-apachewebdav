@@ -23,7 +23,7 @@
 	</RequireAny>\
     </Directory>\
 \
-    <Location "/$user/">\
+    <Location "$Location/$user/">\
         Require    user $user\
     </Location>\
 \
